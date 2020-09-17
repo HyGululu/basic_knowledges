@@ -1,0 +1,95 @@
+package rpcdemo;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+/**
+ * 服务中心实现类
+ */
+public class ServiceCenter implements Server {
+    private static ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    private static final HashMap<String, Class> serviceRegistry = new HashMap<String, Class>();
+    private static boolean isRunning = false;
+    int port;
+
+    public ServiceCenter(int port) {
+        this.port = port;
+    }
+
+
+    @Override
+    public void stop() {
+        isRunning = false;
+        executor.shutdown();
+
+    }
+
+    @Override
+    public void start() throws IOException {
+        ServerSocket serverSocket = new ServerSocket();
+        serverSocket.bind(new InetSocketAddress(port))
+        System.out.println("start srver");
+
+        try {
+            while (true) {
+                //1、监听客户端TCP连接，街道TCP连接后将其封装成task，由线程池执行
+                executor.execute(new ServiceTask(serverSocket.accept()));
+            }
+        } finally {
+            serverSocket.close();
+        }
+
+
+    }
+
+    @Override
+    public void register(Class serviceInterface, Class impl) {
+        serviceRegistry.put(serviceInterface.getName(),impl);
+    }
+
+    @Override
+    public boolean isRunning() {
+        return false;
+    }
+
+    @Override
+    public int getPort() {
+        return port ;
+    }
+
+
+}
+class  ServiceTask implements Runnable{
+    Socket clent = null;
+
+    public ServiceTask(Socket client) {
+        this.clent = client;
+    }
+
+    @Override
+    public void run() {
+        ObjectInputStream input = null;
+        ObjectOutputStream output = null;
+
+        try {
+            //2、将客户端发送的码流反序列化成对象，反射调用服务实现者，获取执行结果
+            input = new ObjectInputStream(clent.getInputStream());
+            String serviceName = input.readUTF();
+            String methodName = input.readUTF();
+            Class<?>[] parameterTypes = (Class<?>[]) input.readObject();
+            Object[] arguments = (Object[]) input.readObject();
+            s
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+}
