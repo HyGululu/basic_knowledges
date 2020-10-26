@@ -165,7 +165,7 @@ public class OcopyOk {
     @Test
     public void binarySearchTest() {
 //        //奇数个
-        int a[]={1,2,3,4,5};
+        int a[] = {1, 2, 3, 4, 5};
         //偶数个
         //int a[] = {1, 2, 3, 4};
 
@@ -174,4 +174,73 @@ public class OcopyOk {
         int half = binarySearch(a, 5);
         System.out.println(half);
     }
+
+    /**
+     * 有100块钱，一瓶水3块钱，2个空瓶子可以换一瓶水，可以拥有多少瓶水
+     * <p>
+     * 1、99/3=33，剩一块钱
+     * 2、32/2=16，剩一块钱，剩一个瓶子
+     * 3、16/2=8，剩一块钱，剩一个瓶子
+     * 4、8/2=4，剩一块钱，剩一个瓶子
+     * 5、4/2=2，剩一块钱，剩一个瓶子
+     * 6、2/2=1，剩一块钱，剩两个瓶子
+     * 7、2/1=1，剩一块钱
+     * <p>
+     * 7、33+16+8+4+2+1+1 =65
+     * <p>
+     * 有100块钱，一瓶水2块钱，2个空瓶子可以换一瓶水，可以拥有多少瓶水
+     * 1、100/2 =50，瓶子有50个
+     * 2、50/2=25，50%2=0
+     * 3、25/2 =12 , 25%2=1 ,剩一个瓶子
+     * 4、12/2=6 ,12%2=0
+     * 5、6/2=3, 6%2=0
+     * 6、3/2=1,3%2=1，又剩一个瓶子
+     * 7、1/2=0;
+     * <p>
+     * 8、50+25+12+6+3+1+1=98
+     */
+    public int countBottle(int money, int price, int exchange) {
+        int count = 0;
+        //这么多钱能买多少瓶水
+        int countWB = money / price;
+        count = countWB;
+       /*  //有多少个空瓶子可以换多少个水瓶子
+        int a = countWB / exchange;
+        int b = countWB % exchange;
+        count = count + countWB;
+        System.out.println("取模% ： " + b);
+        System.out.println("取余% ： " + a);
+        //如果空水瓶除以数不为1，就递归
+        countWB = countWB / exchange;
+        count = count + countWB;
+        System.out.println("count3: " + count + "  现在有多少3: " + countWB);
+        countWB = countWB / exchange;
+        count = count + countWB;
+        System.out.println("count4: " + count + "  现在有多少4: " + countWB);
+        countWB = countWB / exchange;
+        count = count + countWB;
+        System.out.println("count5: " + count + "  现在有多少5: " + countWB);
+        countWB = countWB / exchange;
+        count = count + countWB;
+        System.out.println("count6: " + count + "  现在有多少6: " + countWB);
+        countWB = countWB / exchange;
+        System.out.println("count7: " + count + "  现在有多少7: " + countWB);*/
+        //几个瓶子可以换，和瓶子剩余个数比较
+        //取模的值
+        int countM = 0;
+        while ((countWB / exchange) > 0) {
+            countWB = countWB / exchange;
+            count += countWB;
+            System.out.println("count: " + count + "  现在有多少: " + countWB);
+        }
+        return count;
+    }
+
+    @Test
+    public void countBottleTest() {
+        int i = countBottle(100, 3, 2);
+        System.out.println("统计数量是： " + i);
+    }
+
+
 }

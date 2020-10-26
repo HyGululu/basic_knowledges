@@ -207,7 +207,7 @@ public class Study {
     @Test
     public void countBottleTest() {
         //交换值不能为1，要大于1，为1会陷入死循环，意味一个空瓶子换一瓶水，恶性循环
-        int i = countBottle(100, 3, 2);
+        int i = countBottle(100, 2, 2);
         System.out.println(i);
     }
 
