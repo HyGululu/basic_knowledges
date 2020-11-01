@@ -3,6 +3,8 @@ package zhenti;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 public class OcopyOk {
 
     /**
@@ -242,5 +244,146 @@ public class OcopyOk {
         System.out.println("统计数量是： " + i);
     }
 
+    //给一个目标值和数组，判断数组中是否有两数之和等于目标值
+    //int[] a = {2, 34, 5}; target 10
+    //1、a[0]+a[1]  2+34
+    //2、a[0]+a[2]  2+5
+    //3、a[1]+a[2]  34+5
+
+
+    public boolean isHave(int a[], int target) {
+        if (a.length == 0 || a == null) {
+            return false;
+        }
+        int length = a.length;
+        for (int i = 0; i < length - 1; i++) {
+            for (int j = i + 1; j < length; j++) {
+                System.out.println(a[i] + "  " + a[j]);
+                if (a[i] + a[j] == target) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Test
+    public void isHaveTest() {
+        //int[] a = {2, 34, 5};
+        int[] a = {};
+        boolean isHave = isHave(a, 10);
+        System.out.println(isHave);
+    }
+
+
+    //限定语言：C、Python、C++、Javascript、Python 3、Java、Go
+    //给定一个数组arr，返回arr的最长无的重复子串的长度(无重复指的是所有数字都不相同)。
+
+    //找到字符串的最长无重复字符子串
+    public String findSubStr(String str) {
+        if (str.length() == 0 || str == null) {
+            System.out.println("参数错误！！");
+            return "参数错误";
+        } else {
+            //最长子串
+            String maxStr = null;
+            //字符串长度
+            int len = str.length();
+            //存放字符串的集合
+            HashMap<String, Integer> map = new HashMap<>();
+            for (int i = 0; i < len; i++) {
+                for (int j = i + 1; j < len+1; j++) {
+                    int cc =0;
+                    System.out.println(str.substring(i,j));
+                    char c = str.charAt(i);
+
+                   map.put(str.substring(i, j), cc);
+                   cc++;
+
+                    for (int k = 0; k < len; k++) {
+                        char c1 = str.charAt(k);
+                        System.out.println("charAt "+c1);
+
+                    }
+                }
+            }
+            /*map.put(str.substring(0,1),0);
+            map.put(str.substring(0,2),1);
+            map.put(str.substring(0,3),2);
+            map.put(str.substring(0,4),3);
+            map.put(str.substring(2,4),4);*/
+           /* map.put("a",0);
+            map.put("ab",1);
+            map.put("abc",2);
+            map.put("abca",3);
+            map.put("ad",4);
+            boolean a = "abc".contains("a");
+            int length = "abc".length();*/
+
+          /*
+            map.put("ab",4);*/
+            
+
+            /*for (String str1 : map.keySet()) {
+                System.out.println("遍历key，结果 ： " + str1);
+            }*/
+            return maxStr;
+        }
+
+    }
+
+    @Test
+    public void findSubStrTest() {
+        //findSubStr("");
+        findSubStr("abcad");
+    }
+
+    /**
+     * 快速排序
+     */
+    public void quickSort(int[] arr,int low,int high){
+        if (low>high){
+            return;
+        }
+        int i,j,temp,t;
+        i = low;
+        j=high;
+        //temp是基准位
+        temp = arr[low];
+
+        while (i<j){
+            //先看左边，依次往左递减
+            while (temp<=arr[j]&&i<j){
+                j--;
+            }
+            //再看右边，依次往右递增
+            while (temp>=arr[i]&&i<j){
+                i++;
+            }
+            //如果满足交换条件
+            if(i<j){
+                t=arr[j];
+                arr[j]=arr[i];
+                arr[i]=t;
+            }
+            //最后将基准为i和j相等位置的数字交换
+            arr[low]=arr[i];
+            arr[i]=temp;
+            //递归调左半边数组
+            quickSort(arr,low,j-1);
+            //递归调右半边数组
+            quickSort(arr,j+1,high);
+        }
+    }
+
+    @Test
+    public void quickSortTest(){
+        int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
+        quickSort(arr,0,arr.length-1);
+        System.out.println("排序后：" );
+        for (int i: arr) {
+            System.out.println(i);
+        }
+    }
 
 }
