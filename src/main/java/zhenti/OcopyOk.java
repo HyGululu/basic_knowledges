@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class OcopyOk {
 
@@ -292,17 +293,17 @@ public class OcopyOk {
             //存放字符串的集合
             HashMap<String, Integer> map = new HashMap<>();
             for (int i = 0; i < len; i++) {
-                for (int j = i + 1; j < len+1; j++) {
-                    int cc =0;
-                    System.out.println(str.substring(i,j));
+                for (int j = i + 1; j < len + 1; j++) {
+                    int cc = 0;
+                    System.out.println(str.substring(i, j));
                     char c = str.charAt(i);
 
-                   map.put(str.substring(i, j), cc);
-                   cc++;
+                    map.put(str.substring(i, j), cc);
+                    cc++;
 
                     for (int k = 0; k < len; k++) {
                         char c1 = str.charAt(k);
-                        System.out.println("charAt "+c1);
+                        System.out.println("charAt " + c1);
 
                     }
                 }
@@ -341,49 +342,107 @@ public class OcopyOk {
     /**
      * 快速排序
      */
-    public void quickSort(int[] arr,int low,int high){
-        if (low>high){
+    public void quickSort(int[] arr, int low, int high) {
+        if (low > high) {
             return;
         }
-        int i,j,temp,t;
+        int i, j, temp, t;
         i = low;
-        j=high;
+        j = high;
         //temp是基准位
         temp = arr[low];
 
-        while (i<j){
+        while (i < j) {
             //先看左边，依次往左递减
-            while (temp<=arr[j]&&i<j){
+            while (temp <= arr[j] && i < j) {
                 j--;
             }
             //再看右边，依次往右递增
-            while (temp>=arr[i]&&i<j){
+            while (temp >= arr[i] && i < j) {
                 i++;
             }
             //如果满足交换条件
-            if(i<j){
-                t=arr[j];
-                arr[j]=arr[i];
-                arr[i]=t;
+            if (i < j) {
+                t = arr[j];
+                arr[j] = arr[i];
+                arr[i] = t;
             }
             //最后将基准为i和j相等位置的数字交换
-            arr[low]=arr[i];
-            arr[i]=temp;
+            arr[low] = arr[i];
+            arr[i] = temp;
             //递归调左半边数组
-            quickSort(arr,low,j-1);
+            quickSort(arr, low, j - 1);
             //递归调右半边数组
-            quickSort(arr,j+1,high);
+            quickSort(arr, j + 1, high);
         }
     }
 
     @Test
-    public void quickSortTest(){
-        int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
-        quickSort(arr,0,arr.length-1);
-        System.out.println("排序后：" );
-        for (int i: arr) {
+    public void quickSortTest() {
+        int[] arr = {10, 7, 2, 4, 7, 62, 3, 4, 2, 1, 8, 9, 19};
+        quickSort(arr, 0, arr.length - 1);
+        System.out.println("排序后：");
+        for (int i : arr) {
             System.out.println(i);
         }
     }
+
+
+    //给一个目标值和数组，判断数组中是否有两数之和等于目标值
+    public boolean isHaveSum(int a[], int target) {
+        //  集合: 用来存放遍历过的数组中的值
+        HashSet hashSet = new HashSet();
+        // 目标值 - 当前遍历的值, 检查集合中是否有该值, 如果有, 证明存在
+        for (int i = 0; i < a.length; i++) {
+            if (hashSet.contains(target - a[i])) {
+                return true;
+            } else {
+                // 如果没有, 则将该值放入集合
+                hashSet.add(a[i]);
+            }
+        }
+        // 全部遍历完都没有找到的话, 证明不存在, 返回false
+        return false;
+    }
+
+    @Test
+    public void isHaveSumTest() {
+        int[] a = {1, 2, 3, 4, 5};
+        boolean haveSum = isHaveSum(a, 5);
+        System.out.println("数组中是否有两数之和等于目标值：" + haveSum);
+    }
+
+    // 2. 给定一个整型数组中有且仅有两个数字之和等于目标值，求两个数字在数组中的序号
+    public int[] isHaveSum2(int a[], int target) {
+        // 定义一个res数组用于记录两个数的下标并返回；
+        int[] res = new int[2];
+        ///定义一个Hashmap，遍历数组后存放其中，其中key为数组中元素的值；value为其对应的下标；
+        HashMap<Integer, Integer> map = new HashMap<>();
+        //遍历数组，将数据添加到hashmap中；
+        for (int i = 0; i < a.length; i++) {
+            map.put(a[i],i);
+        }
+        //遍历数组，用target-nums[i]得到差；
+        for (int i = 0; i < a.length; i++) {
+            int t = target-a[i];
+            //判断这个差是否在hashmap中，也就是另一个待找出的数；
+            if (map.containsKey(t)){
+                res[0]=i;
+                res[1]= map.get(t);
+                break;
+            }
+        }
+        return res;
+    }
+    @Test
+    public void isHaveSum2Test() {
+      int[] a = {1, 2, 3, 4, 5};
+        int[] haveSum2 = isHaveSum2(a, 5);
+        for (int i = 0; i < haveSum2.length; i++) {
+            System.out.println("数组中是否有两数之和等于目标值,两个数字在数组中的序号：" + haveSum2[i]);
+
+        }
+    }
+
 
 }

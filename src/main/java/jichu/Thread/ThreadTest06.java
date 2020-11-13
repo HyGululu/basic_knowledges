@@ -1,3 +1,4 @@
+/*
 package jichu.Thread;
 
 import org.apache.commons.io.FileUtils;
@@ -7,6 +8,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.*;
 
+*/
 /**
  * 线程创建方式三：实现Callable接口（了解）
  *
@@ -14,7 +16,8 @@ import java.util.concurrent.*;
  * 1、可以定义返回值
  * 2、可以抛出异常
  *
- */
+ *//*
+
 //1、实现Callable接口
 public class ThreadTest06 implements Callable<Boolean> {
 
@@ -70,4 +73,4 @@ class WebDownLoader03{
             System.out.println("IO异常，downloader方法出现问题");
         }
     }
-}
+}*/
