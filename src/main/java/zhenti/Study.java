@@ -412,7 +412,8 @@ public class Study {
 
     @Test
     public void longPublicSubStrTest() {
-        String s = longPublicSubStr("qwe", "fghqwjj");
+       // String s = longPublicSubStr("qwe", "fghqwjj");
+        String s = longPublicSubStr("1AB2345CD", "12345EF");
         System.out.println(s);
     }
 

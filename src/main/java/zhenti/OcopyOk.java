@@ -444,5 +444,61 @@ public class OcopyOk {
         }
     }
 
+    /**
+     * 给定两个字符串str1和str2,输出两个字符串的最长公共子串，如果最长公共子串为空，输出-1
+     *"输入：1AB2345CD","12345EF"  返回："2345"
+     * 考点：动态规划
+     */
+    public String LCS (String str1, String str2) {
+        // 字符串长度
+        int len1 =str1.length();
+        int len2 = str2.length();
+        // base case，默认 dp 中的每个元素都为 0。
+        int[][] dp = new int[len1+1][len2+1];
+        // 最长公共子串， 用一个临时变量表示
+        int resultLCS = 0;
+        for (int i = 1; i < len1; i++) {
+            for (int j = 1; j < len2; j++) {
+                // 以下是状态转移方程
+                if (str1.charAt(i)==str2.charAt(j)){
+                    dp[i][j]=dp[i-1][j-1]+1;
+                    resultLCS=Math.max(resultLCS,dp[i][j]);
+                }else {
+                    dp[i][j] = 0;
+                }
+            }
+
+        }
+        return "";
+    }
+    @Test
+    public void lcsTest() {
+       // String lcs = LCS("1AB2345CD", "12345EF");
+        String longabc = longabc("1AB2345CD", "12345EF");
+        System.out.println("最长公共子串 "+longabc);
+    }
+
+    public String longabc(String str1, String str2){
+        int len1 = str1.length();
+        String max = "无";
+        int len = 0;
+        for (int i = 0; i < len1; i++) {
+            for (int j = i+1; j < len1+1; j++) {
+                String subStr = str1.substring(i,j);
+                if (subStr.length()>len&&str2.contains(subStr)){
+                    max = subStr;
+                    len = subStr.length();
+                    System.out.println("len长度 "+len);
+                    System.out.println("子串 "+max);
+                }
+            }
+
+        }
+        return max;
+    }
+
+    
+    
+
 
 }
