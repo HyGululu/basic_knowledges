@@ -1,16 +1,18 @@
+/*
 package zhenti;
 
 import org.apache.commons.lang3.StringUtils;
-import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.HashSet;
 
 public class OcopyOk {
 
-    /**
+    */
+/**
      * 统计字符串中含有多少个子串
-     */
+     *//*
+
     public int countSubString(String str, String subStr) {
         //计数
         int count = 0;
@@ -33,8 +35,10 @@ public class OcopyOk {
 
     @Test
     public void countSubStringTest() {
-        /*String str = "abcabc";
-        String subStr = "ab";*/
+        */
+/*String str = "abcabc";
+        String subStr = "ab";*//*
+
 
         String str = "abcabc";
         String subStr = "a";
@@ -65,9 +69,11 @@ public class OcopyOk {
         }
     }
 
-    /**
+    */
+/**
      * 字符串间隔反转
-     */
+     *//*
+
     public String reverseLen(String str, int len) {
         //校验字符串不为空，不为null，空格虽然没有意义，但是就不校验了，空格也行吧；
         // 校验间隔长度大于0，间隔间隔长度小于等于字符串长度
@@ -92,15 +98,19 @@ public class OcopyOk {
     public void reverseLenTest() {
         String str = "abcdef";
         int len = 2;
-        /*String s = reverseLen(str, len);
-        System.out.println("字符串间隔反转：" + s);*/
+        */
+/*String s = reverseLen(str, len);
+        System.out.println("字符串间隔反转：" + s);*//*
+
         String s = reverseLen1(str);
         System.out.println("字符串间隔反转：" + s);
     }
 
-    /**
+    */
+/**
      * 字符串反转
-     */
+     *//*
+
     public String reverseLen1(String str) {
         //非空判断
         if (StringUtils.isNotEmpty(str)) {
@@ -113,9 +123,11 @@ public class OcopyOk {
         }
     }
 
-    /**
+    */
+/**
      * 最大和子序列
-     */
+     *//*
+
     public int subMax(int a[]) {
         //用来保存最大连续子数组的值
         int max = a[0];
@@ -145,9 +157,11 @@ public class OcopyOk {
         System.out.println(max);
     }
 
-    /**
+    */
+/**
      * 二分查找
-     **/
+     **//*
+
     public int binarySearch(int a[], int value) {
         int low = 0;
         int high = a.length - 1;
@@ -178,7 +192,8 @@ public class OcopyOk {
         System.out.println(half);
     }
 
-    /**
+    */
+/**
      * 有100块钱，一瓶水3块钱，2个空瓶子可以换一瓶水，可以拥有多少瓶水
      * <p>
      * 1、99/3=33，剩一块钱
@@ -201,13 +216,15 @@ public class OcopyOk {
      * 7、1/2=0;
      * <p>
      * 8、50+25+12+6+3+1+1=98
-     */
+     *//*
+
     public int countBottle(int money, int price, int exchange) {
         int count = 0;
         //这么多钱能买多少瓶水
         int countWB = money / price;
         count = countWB;
-       /*  //有多少个空瓶子可以换多少个水瓶子
+       */
+/*  //有多少个空瓶子可以换多少个水瓶子
         int a = countWB / exchange;
         int b = countWB % exchange;
         count = count + countWB;
@@ -227,7 +244,8 @@ public class OcopyOk {
         count = count + countWB;
         System.out.println("count6: " + count + "  现在有多少6: " + countWB);
         countWB = countWB / exchange;
-        System.out.println("count7: " + count + "  现在有多少7: " + countWB);*/
+        System.out.println("count7: " + count + "  现在有多少7: " + countWB);*//*
+
         //几个瓶子可以换，和瓶子剩余个数比较
         //取模的值
         int countM = 0;
@@ -308,26 +326,34 @@ public class OcopyOk {
                     }
                 }
             }
-            /*map.put(str.substring(0,1),0);
+            */
+/*map.put(str.substring(0,1),0);
             map.put(str.substring(0,2),1);
             map.put(str.substring(0,3),2);
             map.put(str.substring(0,4),3);
-            map.put(str.substring(2,4),4);*/
-           /* map.put("a",0);
+            map.put(str.substring(2,4),4);*//*
+
+           */
+/* map.put("a",0);
             map.put("ab",1);
             map.put("abc",2);
             map.put("abca",3);
             map.put("ad",4);
             boolean a = "abc".contains("a");
-            int length = "abc".length();*/
+            int length = "abc".length();*//*
 
-          /*
-            map.put("ab",4);*/
+
+          */
+/*
+            map.put("ab",4);*//*
+
             
 
-            /*for (String str1 : map.keySet()) {
+            */
+/*for (String str1 : map.keySet()) {
                 System.out.println("遍历key，结果 ： " + str1);
-            }*/
+            }*//*
+
             return maxStr;
         }
 
@@ -339,9 +365,11 @@ public class OcopyOk {
         findSubStr("abcad");
     }
 
-    /**
+    */
+/**
      * 快速排序
-     */
+     *//*
+
     public void quickSort(int[] arr, int low, int high) {
         if (low > high) {
             return;
@@ -444,11 +472,13 @@ public class OcopyOk {
         }
     }
 
-    /**
+    */
+/**
      * 给定两个字符串str1和str2,输出两个字符串的最长公共子串，如果最长公共子串为空，输出-1
      *"输入：1AB2345CD","12345EF"  返回："2345"
      * 考点：动态规划
-     */
+     *//*
+
     public String LCS (String str1, String str2) {
         // 字符串长度
         int len1 =str1.length();
@@ -497,8 +527,135 @@ public class OcopyOk {
         return max;
     }
 
-    
-    
+    */
+/**
+     * jinrongde
+     *//*
+
+    //1.查找某个元素在有序数组中的位置
+    //2.查找数组中出现次数超过一半的数字
+    //3.统计一段文本中指定字符串出现的次数
+    //4.传入日期的年月日,返回天数.
+    //5.查找单链表的中间节点，要求只能遍历一次链表
+    //6.一个数组中只有一个数字出现奇数次，其他都是出现偶数次，时间复杂度为O(n);
+
+    public static int binSearch(int srcArray[], int start, int end, int key) {
+        int mid = (end + start) / 2;
+        if (srcArray[mid] == key) {
+            return mid;
+        }
+        if (start >= end) {
+            return -1;
+        } else if (key > srcArray[mid]) {
+            return binSearch(srcArray, mid + 1, end, key);
+        } else if (key < srcArray[mid]) {
+            return binSearch(srcArray, start, mid - 1, key);
+        }
+        return -1;
+    }
+
+    public int moreThanHaft(int[] num){
+        int result = -1;
+        int times = 0;
+        for(int i=0;i<num.length;i++){
+            if(times==0){
+                result = num[i];
+                times++;
+            }
+            else{
+                if(num[i]==result){
+                    times++;
+                }
+                else{
+                    times--;
+                }
+            }
+        }
+
+        return result;
+    }
+
+
+    public int text(String text,String input){
+
+        int count = 0;
+
+        for(inti=0;i<=text.length()-input.length();i++){
+
+            String sb = text.substring(i, i+input.length());
+
+            if(sb.equals(input)){
+
+                count++;
+
+            }
+
+        }
+
+        return count;
+
+    }
+
+    public int orderDate(int year,int month,int day){
+        int dateSum = 0;
+        for(int i = 1; i < month; i++){
+            switch(i){
+                case 1: case 3: case 5: case 7: case 8: case 10: case 12:dateSum += 31; break;
+                case 4: case 6: case 9: case 11:dateSum += 30; break;
+                case 2:
+                    if(((year % 4 == 0) & (year % 100 != 0)) | (year % 400 == 0))
+                        dateSum += 29;
+                    else dateSum += 28;
+            }
+        }
+        return dateSum = dateSum + day;
+    }
+    //思路：快慢指针
+
+    class ListNode{
+        int data;
+        ListNode next;
+    }
+    public class Link{
+        public static void FindMid(ListNode first){
+            ListNode fast = first;
+            ListNode slow = first;
+            while((fast != null)&&(fast.next != null)){
+                fast = fast.next.next;
+                slow = slow.next;
+            }
+            System.out.println(slow.data);
+
+        }
+        public static void main(String[] args) {
+            ListNode n1 = new ListNode();
+            ListNode n2 = new ListNode();
+            ListNode n3 = new ListNode();
+            ListNode n4 = new ListNode();
+            ListNode n5 = new ListNode();
+            n1.data = 1;
+            n2.data = 2;
+            n3.data = 3;
+            n4.data = 4;
+            n5.data = 5;
+            n1.next = n2;
+            n2.next = n3;
+            n3.next = n4;
+            n4.next = n5;
+            FindMid(n1);
+        }
+    }
+    public class Test {
+        public static void main(String[] args) {
+            int[] arr = {1,1,2,3,4,2,3,};
+            int res = arr[0];
+            for (int i = 1 ; i< arr.length;i++){
+                res^=arr[i];
+            }
+            System.out.println(res);
+        }
+    }
 
 
 }
+*/
