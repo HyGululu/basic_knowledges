@@ -11,6 +11,6 @@ public class Client {
     public static void main(String[] args) throws Exception {
         //用代理，网络相关的代理
         Stub stub = new Stub();
-        System.out.println(stub.findUserById(123));
+        System.out.println(stub.findUserById(123234));
     }
 }

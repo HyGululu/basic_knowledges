@@ -3,6 +3,7 @@ package rpcdemo.rpc05;
 import rpcdemo.rpc1.IUserService;
 import rpcdemo.rpc1.User;
 
+import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -18,7 +19,7 @@ public class Stub {
             @Override
             //proxy  :user, Method :findUserById, Object[] :123
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                Socket s = new Socket("127.0.0.1", 8888);
+                Socket s = new Socket("127.0.0.1", 8881);
 
                 ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
 

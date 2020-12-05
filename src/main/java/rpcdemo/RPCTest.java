@@ -12,15 +12,15 @@ public class RPCTest {
             @Override
             public void run() {
                 try {
-                    Server serviceServer = new ServiceCenter(8088);
-                    serviceServer.register(HelloService.class, HelloServiceImpl.class);
+                    rpcdemo.Server serviceServer = (rpcdemo.Server) new rpcdemo.ServiceCenter(8088);
+                    serviceServer.register(rpcdemo.HelloService.class, rpcdemo.HelloServiceImpl.class);
                     serviceServer.start();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
-        HelloService service = RPCClient.getRemoteProxyObj(HelloService.class, new InetSocketAddress("localhost", 8088));
+        rpcdemo.HelloService service = rpcdemo.RPCClient.getRemoteProxyObj(rpcdemo.HelloService.class, new InetSocketAddress("localhost", 8088));
         System.out.println(service.sayHi("hello a rpc !!! get it?"));
     }
 }

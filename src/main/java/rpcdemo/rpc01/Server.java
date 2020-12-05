@@ -11,7 +11,7 @@ public class Server {
     private static boolean running = true;
 
     public static void main(String[] args) throws Exception {
-        ServerSocket ss = new ServerSocket(8888);
+        ServerSocket ss = new ServerSocket(8881);
         while (running) {
             Socket s = ss.accept();
             process(s);
@@ -28,7 +28,7 @@ public class Server {
         DataOutputStream dos = new DataOutputStream(out);
 
         int id = dis.readInt();
-        UserServiceImpl ser = new UserServiceImpl();
+        rpcdemo.rpc01.UserServiceImpl ser = new rpcdemo.rpc01.UserServiceImpl();
         User user = ser.findUserById(id);
         dos.writeInt(user.getId());
         dos.writeUTF(user.getName());

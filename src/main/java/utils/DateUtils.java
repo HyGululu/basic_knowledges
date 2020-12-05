@@ -1,7 +1,9 @@
 package utils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -17,6 +19,23 @@ import static java.time.temporal.ChronoUnit.YEARS;
 import static java.time.temporal.TemporalAdjusters.*;
 
 public class DateUtils {
+    public static void main(String[] args) {
+        //1，获取当前系统时间
+        Date date = new Date();
+
+        //2，Date转为DateTime
+        DateTime dateTime = new DateTime(date.getTime());
+
+        //3，DateTime转为Date
+        Date date1 = dateTime.toDate();
+
+        //4，获取日期格式,
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        //5，Date转换为String类型格式
+        String dateStr = df.format(new Date());
+
+    }
 
     /**
      * 获取默认时间格式: yyyy-MM-dd HH:mm:ss

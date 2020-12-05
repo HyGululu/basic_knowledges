@@ -2,17 +2,13 @@
 package zhenti;
 
 import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.HashSet;
 
 public class OcopyOk {
-
-    */
-/**
-     * 统计字符串中含有多少个子串
-     *//*
-
+    //统计字符串中含有多少个子串
     public int countSubString(String str, String subStr) {
         //计数
         int count = 0;
@@ -33,11 +29,10 @@ public class OcopyOk {
         }
     }
 
-    @Test
+  @org.junit.jupiter.api.Test
     public void countSubStringTest() {
-        */
-/*String str = "abcabc";
-        String subStr = "ab";*//*
+        String str = "abcabc";
+        String subStr = "ab";
 
 
         String str = "abcabc";
@@ -69,12 +64,8 @@ public class OcopyOk {
         }
     }
 
-    */
-/**
-     * 字符串间隔反转
-     *//*
-
-    public String reverseLen(String str, int len) {
+// 字符串间隔反转
+public String reverseLen(String str, int len) {
         //校验字符串不为空，不为null，空格虽然没有意义，但是就不校验了，空格也行吧；
         // 校验间隔长度大于0，间隔间隔长度小于等于字符串长度
         if (StringUtils.isNotEmpty(str) && str.length() > len && len > 0) {
@@ -98,18 +89,15 @@ public class OcopyOk {
     public void reverseLenTest() {
         String str = "abcdef";
         int len = 2;
-        */
-/*String s = reverseLen(str, len);
-        System.out.println("字符串间隔反转：" + s);*//*
+        String s = reverseLen(str, len);
+        System.out.println("字符串间隔反转：" + s);
 
         String s = reverseLen1(str);
         System.out.println("字符串间隔反转：" + s);
     }
 
-    */
-/**
-     * 字符串反转
-     *//*
+// 字符串反转
+
 
     public String reverseLen1(String str) {
         //非空判断
@@ -123,10 +111,8 @@ public class OcopyOk {
         }
     }
 
-    */
-/**
-     * 最大和子序列
-     *//*
+// 最大和子序列
+
 
     public int subMax(int a[]) {
         //用来保存最大连续子数组的值
@@ -157,11 +143,7 @@ public class OcopyOk {
         System.out.println(max);
     }
 
-    */
-/**
-     * 二分查找
-     **//*
-
+    //二分查找
     public int binarySearch(int a[], int value) {
         int low = 0;
         int high = a.length - 1;
@@ -218,13 +200,14 @@ public class OcopyOk {
      * 8、50+25+12+6+3+1+1=98
      *//*
 
+
+
     public int countBottle(int money, int price, int exchange) {
         int count = 0;
         //这么多钱能买多少瓶水
         int countWB = money / price;
         count = countWB;
-       */
-/*  //有多少个空瓶子可以换多少个水瓶子
+        //有多少个空瓶子可以换多少个水瓶子
         int a = countWB / exchange;
         int b = countWB % exchange;
         count = count + countWB;
@@ -244,7 +227,7 @@ public class OcopyOk {
         count = count + countWB;
         System.out.println("count6: " + count + "  现在有多少6: " + countWB);
         countWB = countWB / exchange;
-        System.out.println("count7: " + count + "  现在有多少7: " + countWB);*//*
+        System.out.println("count7: " + count + "  现在有多少7: " + countWB);
 
         //几个瓶子可以换，和瓶子剩余个数比较
         //取模的值
@@ -326,33 +309,27 @@ public class OcopyOk {
                     }
                 }
             }
-            */
-/*map.put(str.substring(0,1),0);
-            map.put(str.substring(0,2),1);
-            map.put(str.substring(0,3),2);
-            map.put(str.substring(0,4),3);
-            map.put(str.substring(2,4),4);*//*
+            map.put(str.substring(0, 1), 0);
+            map.put(str.substring(0, 2), 1);
+            map.put(str.substring(0, 3), 2);
+            map.put(str.substring(0, 4), 3);
+            map.put(str.substring(2, 4), 4);
 
-           */
-/* map.put("a",0);
-            map.put("ab",1);
-            map.put("abc",2);
-            map.put("abca",3);
-            map.put("ad",4);
+            map.put("a", 0);
+            map.put("ab", 1);
+            map.put("abc", 2);
+            map.put("abca", 3);
+            map.put("ad", 4);
             boolean a = "abc".contains("a");
-            int length = "abc".length();*//*
+            int length = "abc".length();
 
 
-          */
-/*
-            map.put("ab",4);*//*
+            map.put("ab", 4);
 
-            
 
-            */
-/*for (String str1 : map.keySet()) {
+            for (String str1 : map.keySet()) {
                 System.out.println("遍历key，结果 ： " + str1);
-            }*//*
+            }
 
             return maxStr;
         }
@@ -365,10 +342,8 @@ public class OcopyOk {
         findSubStr("abcad");
     }
 
-    */
-/**
-     * 快速排序
-     *//*
+// 快速排序
+
 
     public void quickSort(int[] arr, int low, int high) {
         if (low > high) {
@@ -448,23 +423,24 @@ public class OcopyOk {
         HashMap<Integer, Integer> map = new HashMap<>();
         //遍历数组，将数据添加到hashmap中；
         for (int i = 0; i < a.length; i++) {
-            map.put(a[i],i);
+            map.put(a[i], i);
         }
         //遍历数组，用target-nums[i]得到差；
         for (int i = 0; i < a.length; i++) {
-            int t = target-a[i];
+            int t = target - a[i];
             //判断这个差是否在hashmap中，也就是另一个待找出的数；
-            if (map.containsKey(t)){
-                res[0]=i;
-                res[1]= map.get(t);
+            if (map.containsKey(t)) {
+                res[0] = i;
+                res[1] = map.get(t);
                 break;
             }
         }
         return res;
     }
+
     @Test
     public void isHaveSum2Test() {
-      int[] a = {1, 2, 3, 4, 5};
+        int[] a = {1, 2, 3, 4, 5};
         int[] haveSum2 = isHaveSum2(a, 5);
         for (int i = 0; i < haveSum2.length; i++) {
             System.out.println("数组中是否有两数之和等于目标值,两个数字在数组中的序号：" + haveSum2[i]);
@@ -475,25 +451,27 @@ public class OcopyOk {
     */
 /**
      * 给定两个字符串str1和str2,输出两个字符串的最长公共子串，如果最长公共子串为空，输出-1
-     *"输入：1AB2345CD","12345EF"  返回："2345"
+     * "输入：1AB2345CD","12345EF"  返回："2345"
      * 考点：动态规划
      *//*
 
-    public String LCS (String str1, String str2) {
+
+
+    public String LCS(String str1, String str2) {
         // 字符串长度
-        int len1 =str1.length();
+        int len1 = str1.length();
         int len2 = str2.length();
         // base case，默认 dp 中的每个元素都为 0。
-        int[][] dp = new int[len1+1][len2+1];
+        int[][] dp = new int[len1 + 1][len2 + 1];
         // 最长公共子串， 用一个临时变量表示
         int resultLCS = 0;
         for (int i = 1; i < len1; i++) {
             for (int j = 1; j < len2; j++) {
                 // 以下是状态转移方程
-                if (str1.charAt(i)==str2.charAt(j)){
-                    dp[i][j]=dp[i-1][j-1]+1;
-                    resultLCS=Math.max(resultLCS,dp[i][j]);
-                }else {
+                if (str1.charAt(i) == str2.charAt(j)) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                    resultLCS = Math.max(resultLCS, dp[i][j]);
+                } else {
                     dp[i][j] = 0;
                 }
             }
@@ -501,25 +479,26 @@ public class OcopyOk {
         }
         return "";
     }
+
     @Test
     public void lcsTest() {
-       // String lcs = LCS("1AB2345CD", "12345EF");
+        // String lcs = LCS("1AB2345CD", "12345EF");
         String longabc = longabc("1AB2345CD", "12345EF");
-        System.out.println("最长公共子串 "+longabc);
+        System.out.println("最长公共子串 " + longabc);
     }
 
-    public String longabc(String str1, String str2){
+    public String longabc(String str1, String str2) {
         int len1 = str1.length();
         String max = "无";
         int len = 0;
         for (int i = 0; i < len1; i++) {
-            for (int j = i+1; j < len1+1; j++) {
-                String subStr = str1.substring(i,j);
-                if (subStr.length()>len&&str2.contains(subStr)){
+            for (int j = i + 1; j < len1 + 1; j++) {
+                String subStr = str1.substring(i, j);
+                if (subStr.length() > len && str2.contains(subStr)) {
                     max = subStr;
                     len = subStr.length();
-                    System.out.println("len长度 "+len);
-                    System.out.println("子串 "+max);
+                    System.out.println("len长度 " + len);
+                    System.out.println("子串 " + max);
                 }
             }
 
@@ -527,11 +506,7 @@ public class OcopyOk {
         return max;
     }
 
-    */
-/**
-     * jinrongde
-     *//*
-
+// jinrongde
     //1.查找某个元素在有序数组中的位置
     //2.查找数组中出现次数超过一半的数字
     //3.统计一段文本中指定字符串出现的次数
@@ -554,19 +529,17 @@ public class OcopyOk {
         return -1;
     }
 
-    public int moreThanHaft(int[] num){
+    public int moreThanHaft(int[] num) {
         int result = -1;
         int times = 0;
-        for(int i=0;i<num.length;i++){
-            if(times==0){
+        for (int i = 0; i < num.length; i++) {
+            if (times == 0) {
                 result = num[i];
                 times++;
-            }
-            else{
-                if(num[i]==result){
+            } else {
+                if (num[i] == result) {
                     times++;
-                }
-                else{
+                } else {
                     times--;
                 }
             }
@@ -576,15 +549,15 @@ public class OcopyOk {
     }
 
 
-    public int text(String text,String input){
+    public int text(String text, String input) {
 
         int count = 0;
 
-        for(inti=0;i<=text.length()-input.length();i++){
+        for (inti = 0; i <= text.length() - input.length(); i++) {
 
-            String sb = text.substring(i, i+input.length());
+            String sb = text.substring(i, i + input.length());
 
-            if(sb.equals(input)){
+            if (sb.equals(input)) {
 
                 count++;
 
@@ -596,14 +569,27 @@ public class OcopyOk {
 
     }
 
-    public int orderDate(int year,int month,int day){
+    public int orderDate(int year, int month, int day) {
         int dateSum = 0;
-        for(int i = 1; i < month; i++){
-            switch(i){
-                case 1: case 3: case 5: case 7: case 8: case 10: case 12:dateSum += 31; break;
-                case 4: case 6: case 9: case 11:dateSum += 30; break;
+        for (int i = 1; i < month; i++) {
+            switch (i) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    dateSum += 31;
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    dateSum += 30;
+                    break;
                 case 2:
-                    if(((year % 4 == 0) & (year % 100 != 0)) | (year % 400 == 0))
+                    if (((year % 4 == 0) & (year % 100 != 0)) | (year % 400 == 0))
                         dateSum += 29;
                     else dateSum += 28;
             }
@@ -612,21 +598,23 @@ public class OcopyOk {
     }
     //思路：快慢指针
 
-    class ListNode{
+    class ListNode {
         int data;
         ListNode next;
     }
-    public class Link{
-        public static void FindMid(ListNode first){
+
+    public class Link {
+        public static void FindMid(ListNode first) {
             ListNode fast = first;
             ListNode slow = first;
-            while((fast != null)&&(fast.next != null)){
+            while ((fast != null) && (fast.next != null)) {
                 fast = fast.next.next;
                 slow = slow.next;
             }
             System.out.println(slow.data);
 
         }
+
         public static void main(String[] args) {
             ListNode n1 = new ListNode();
             ListNode n2 = new ListNode();
@@ -645,12 +633,13 @@ public class OcopyOk {
             FindMid(n1);
         }
     }
+
     public class Test {
         public static void main(String[] args) {
-            int[] arr = {1,1,2,3,4,2,3,};
+            int[] arr = {1, 1, 2, 3, 4, 2, 3,};
             int res = arr[0];
-            for (int i = 1 ; i< arr.length;i++){
-                res^=arr[i];
+            for (int i = 1; i < arr.length; i++) {
+                res ^= arr[i];
             }
             System.out.println(res);
         }

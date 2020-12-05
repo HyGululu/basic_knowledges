@@ -1,6 +1,5 @@
 package mapmapmap;
 
-import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,7 +8,6 @@ import java.util.Map;
 public class MapOkOk {
 
     //遍历map
-    @Test
     public void testMap() {
         HashMap<String, Object> map = new HashMap<>();
         map.put("姓名", "ghy");

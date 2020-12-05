@@ -15,10 +15,10 @@ import java.net.Socket;
 public class Stub {
     public User findUserById(Integer id) throws Exception {
 
-        Socket s = new Socket("127.0.0.1", 8888);
+        Socket s = new Socket("127.0.0.1", 8881);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
-        dos.writeInt(123);
+        dos.writeInt(123234);
 
         s.getOutputStream().write(baos.toByteArray());
         s.getOutputStream().flush();

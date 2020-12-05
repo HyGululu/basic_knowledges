@@ -1,7 +1,8 @@
 package shejimoshi.singletonpattern;
 
 /*
-创建一个 Singleton 类
+
+掌握哦
 
 让构造方法私有；一个类仅有一个实例，
 

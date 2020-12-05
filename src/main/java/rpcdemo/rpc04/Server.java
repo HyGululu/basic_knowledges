@@ -12,7 +12,7 @@ public class Server {
     private static boolean running = true;
 
     public static void main(String[] args) throws Exception {
-        ServerSocket ss = new ServerSocket(8888);
+        ServerSocket ss = new ServerSocket(8881);
         while (running) {
             Socket s = ss.accept();
             process(s);

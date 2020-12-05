@@ -1,14 +1,10 @@
 package zhenti;
 
-//import com.bj58.sfft.json.jsontools.validator.impl.predicates.Str;
-
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Study {
@@ -26,7 +22,7 @@ public class Study {
         //子串长度,空格也是有长度的,子串为空格可以,子串为空会陷入死循环！！！子串为null会报空指针异常
         try {
             //str != null || str.length() != 0
-            if (StringUtils.isNotEmpty(str) && StringUtils.isNotEmpty(subStr)) {
+            if (StringUtils.isNotBlank(str) && StringUtils.isNotBlank(subStr)) {
                 //子串长度
                 int subStrLen = subStr.length();
                 while ((index = str.indexOf(subStr)) != -1) {
@@ -89,7 +85,7 @@ public class Study {
     public String reverseLen(String str, int len) {
         //校验字符串不为空，不为null，空格虽然没有意义，但是就不校验了，空格也行吧；
         // 校验间隔长度大于0，间隔间隔长度小于等于字符串长度
-        if (StringUtils.isNotEmpty(str) && str.length() >= len && len > 0) {
+        if (StringUtils.isNotBlank(str) && str.length() >= len && len > 0) {
             String fina = "";
             for (int i = 0; i < str.length(); i = i + len) {
                 //判断i+len会不会超过字符串长度，如果没超过尾部就是i+len，超过了就是字符串的长度str.length()
@@ -241,7 +237,7 @@ public class Study {
     public char notRepeatChar(String s) {
         //参数校验
         //str == null || str.length() == 0
-        if (StringUtils.isEmpty(s)) {
+        if (StringUtils.isBlank(s)) {
             return '空';
         }
         for (int i = 0; i < s.length(); i++) {
@@ -266,7 +262,7 @@ public class Study {
     //最长回文子串
     public String maxString(String s) {
         //判断入参是否为空和null，为空格
-        if (StringUtils.isEmpty(s)) {
+        if (StringUtils.isBlank(s)) {
             return "入参不能为空";
         }
         ArrayList<String> strings = new ArrayList<>();
@@ -281,7 +277,7 @@ public class Study {
             }
         }
         //判断集合是否为空
-        if (CollectionUtils.isNotEmpty(strings)) {
+        if (!strings.isEmpty()) {
             System.out.println(strings);
             String maxString = strings.get(0);
             for (int i = 1; i < strings.size(); i++) {
