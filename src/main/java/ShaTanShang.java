@@ -97,4 +97,30 @@ public class ShaTanShang {
         int num = getSubStrs(str, "ab");
         System.out.println("字符串里有多少个子串？ " + num);
     }
+
+    //两数之和
+    // 给定一个整数数组 nums和一个目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。
+    public int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+        //如果数组为空，或者数组长度是0，直接返回
+        if (null==nums||nums.length==0){
+            return null;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i+1; j < nums.length; j++) {
+                if (nums[i]+nums[j]==target){
+                    result[0]=i;
+                    result[1]=j;
+                    return result;
+                }
+            }
+        }
+        return null;
+    }
+    @Test
+    public void twoSumTest() {
+        int[] nums = new int[]{1,2,3,4,5,6};
+        int[] ints = twoSum(nums, 5);
+        System.out.println("结果是？ "+ints);
+    }
 }

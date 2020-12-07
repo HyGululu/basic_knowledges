@@ -1,5 +1,7 @@
 package yuanzidemo;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class AtomicIntegerMyTest {
     private static final int THREADS_COUNT = 20;
     public static int count =0;
