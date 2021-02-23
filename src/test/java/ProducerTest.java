@@ -13,9 +13,9 @@ public class ProducerTest {
     @Autowired
     private TopicProducer topicProducer;
 
-    @Test
+    /*@Test
     public void testProduce(){
         queueProducer.sendMessage("StringQueue","这是个队列消息(*^▽^*)");
         topicProducer.sendMessage("StringTopic","这是个发布/订阅消息ヾ(◍°∇°◍)ﾉﾞ");
-    }
+    }*/
 }

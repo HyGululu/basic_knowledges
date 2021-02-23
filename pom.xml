@@ -15,8 +15,43 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <!-- 指明编译源代码时使用的字符编码，
+                   maven编译的时候默认使用的GBK编码，
+                     通过encoding属性设置字符编码，
+                     告诉maven这个项目使用UTF-8来编译 -->
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.4</version>
+                <configuration>
+                    <skip>false</skip>
+                    <includes></includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <configuration>
+                            <!-- 指定覆盖率报告的生成位置 -->
+                            <outputDirectory>${basedir}/target/coverage-reports</outputDirectory>
+                        </configuration>
+                        <id>default-report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
     <dependencies>
@@ -102,6 +137,14 @@
             <artifactId>jol-core</artifactId>
             <version>0.13</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.agent -->
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>org.jacoco.agent</artifactId>
+            <version>0.8.5</version>
+            <scope>test</scope>
         </dependency>
 
 
