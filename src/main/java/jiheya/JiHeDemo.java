@@ -59,8 +59,19 @@ public class JiHeDemo {
         stringBuilder.append(1);
         stringBuilder.indexOf("abc");
         stringBuilder.length();
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(1);
+        System.out.println("String Buffer 你好啊");
+        StringBuffer stringBuffer = new StringBuffer("大家好，很高兴见到大家！");
+        stringBuffer.append("你好啊！");
+        stringBuffer.append("我们也很高兴见到你！");
+        System.out.println(stringBuffer);
+        stringBuffer.reverse();
+        System.out.println("reverse反转："+stringBuffer);
+        stringBuffer.delete(0,1);
+        System.out.println("delete移除："+stringBuffer);
+        stringBuffer.insert(3,"哈哈");
+        System.out.println("insert插入："+stringBuffer);
+        stringBuffer.replace(3,4,"嘿嘿");
+        System.out.println("replace替换："+stringBuffer);
         stringBuffer.charAt(1);
         stringBuffer.indexOf("abc");
     }

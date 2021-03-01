@@ -12,10 +12,10 @@ public class testStringBuilderAndStringBuffer {
         StringBuffer stringBuffer = new StringBuffer();
 
         //CountDownLatch计数器  计数器初始化
-        CountDownLatch countDownLatch1 = new CountDownLatch(1000);
-        CountDownLatch countDownLatch2 = new CountDownLatch(1000);
+        CountDownLatch countDownLatch1 = new CountDownLatch(100000);
+        CountDownLatch countDownLatch2 = new CountDownLatch(100000);
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100000; i++) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -30,7 +30,7 @@ public class testStringBuilderAndStringBuffer {
                 }
             }).start();
             }
-        for (int j = 0; j < 10000; j++) {
+        for (int j = 0; j < 100000; j++) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -48,11 +48,13 @@ public class testStringBuilderAndStringBuffer {
         try {
             //当计数器的值变为0时，在CountDownLatch上 await() 的线程就会被唤醒
             countDownLatch1.await();
-            System.out.println(stringBuilder.length());
+            System.out.println("stringBuilder长度：" +stringBuilder.length());
             countDownLatch2.await();
             System.out.println(stringBuffer.length());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
+
 }
