@@ -22,3 +22,8 @@ void                 putAll(Map<? extends K, ? extends V> map)
 V                    remove(Object key)
 int                  size()
 Collection<V>        values()
+
+存储内容：key value
+存储结构：数组+链表+红黑树（jdk8）
+存储位置：数组下标
+存储大小：数组长度

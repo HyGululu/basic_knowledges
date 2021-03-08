@@ -551,6 +551,7 @@ public class Study {
     private void quickSort(int[] nums,int low,int high) {
         int start =low;
         int end =high;
+        //temp是基准位
         int key =nums[low];
         while (start<end){
             while (end>start&&nums[end]>=key){

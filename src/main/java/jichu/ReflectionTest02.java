@@ -8,15 +8,16 @@ public class ReflectionTest02 {
         Person person = new Student();
         System.out.println("这个人是："+person.name);
 
-        //方式一：通过对象获得
+        //方式一：调用对象的getClass()方法：通过对象获得
         Class c1 = person.getClass();
         System.out.println(c1.hashCode());
 
-        //方式二:forName获得
+        //方式二:使用Class类中forName静态方法：forName获得
+        //类的全路径，，建议使用这个方式
         Class c2 = Class.forName("jichu.Student");
         System.out.println(c2.hashCode());
 
-        //方式三：通过类名.class获得
+        //方式三：调用某个类的class属性：通过类名.class获得
         Class c3 = Student.class;
         System.out.println(c3.hashCode());
 

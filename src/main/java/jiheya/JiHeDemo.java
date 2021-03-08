@@ -74,5 +74,7 @@ public class JiHeDemo {
         System.out.println("replace替换："+stringBuffer);
         stringBuffer.charAt(1);
         stringBuffer.indexOf("abc");
+
+
     }
 }

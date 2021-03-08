@@ -7,12 +7,17 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/*
+/**
+ *
+ * 开多个线程不断进行put操作，HashMap与AtomicInteger都是全局共享的
+ *
 1、hashmap不是线程安全的
 2、如何线程安全的使用HashMap
+
  */
 public class HashMapTest {
     public static void main(String[] args) {
+        //开多个线程
         HashMapThread thread0 = new HashMapThread();
         HashMapThread thread1 = new HashMapThread();
         HashMapThread thread2 = new HashMapThread();
@@ -41,14 +46,18 @@ public class HashMapTest {
     }
 
 }
+
 class HashMapThread extends Thread {
+    //HashMap与AtomicInteger都是全局共享的
     //原子类AtomicInteger();
-    private  static AtomicInteger ai = new AtomicInteger();
-    private  static  Map<Integer,Integer> map = new HashMap<>();
+    private static AtomicInteger ai = new AtomicInteger();
+    private static Map<Integer, Integer> map = new HashMap<>();
+
     @Override
-    public void run(){
-        while (ai.get()<100000000){
-            map.put(ai.get(),ai.get());
+    public void run() {
+        while (ai.get() < 100000000) {
+            //不断进行put操作
+            map.put(ai.get(), ai.get());
             //incrementAndGet返回的是加1后的值
             ai.incrementAndGet();
         }

@@ -13,7 +13,7 @@ public class SocketDemoTest {
     public static void main(String[] args) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("请输入服务器端口(默认8080):");
-        Integer port =8080;
+        Integer port =8881;
 
         try {
             Integer.parseInt(reader.readLine());

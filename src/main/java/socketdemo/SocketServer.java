@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -41,6 +40,7 @@ public class SocketServer extends Timer {
                 while (!serverSocket.isClosed()) {
                     try {
                         Socket socket = serverSocket.accept();
+                        logger.info("与客户端连接成功");
                         String clientIp = socket.getInetAddress().getHostAddress();
                         logger.info("client:{}", clientIp);
 
