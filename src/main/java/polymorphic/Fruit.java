@@ -1,4 +1,4 @@
-package duotaidemo;
+package polymorphic;
 
 /*
 多态
