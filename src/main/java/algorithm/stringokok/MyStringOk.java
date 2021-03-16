@@ -52,4 +52,8 @@ equals()：字符串比较。
         System.out.println(stb.toString());
         System.out.println(new StringBuffer(stra).reverse().toString());
     }
+    /*
+        字符串替换，有三种
+
+     */
 }

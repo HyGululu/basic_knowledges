@@ -78,4 +78,8 @@ public class SortSolution {
         System.out.println("quickSort排序后：" + Arrays.toString(arr));
 
     }
+
+    public void quickSort2(int[] nums, int low, int high) {
+
+    }
 }

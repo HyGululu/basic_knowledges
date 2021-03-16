@@ -547,16 +547,25 @@ public class Study {
 
     /**
      * 快速排序
+     *
+     * 先分区，再处理子问题
      */
     private void quickSort(int[] nums,int low,int high) {
+        //低的下标
         int start =low;
+        //高的下标
         int end =high;
-        //temp是基准位
+        //第一步，先从数组里找出一个基准元素，这里的基准元素取序列的第一个元素
         int key =nums[low];
+        //开始循环，低的下标要小于高的下标，循环才能满足
         while (start<end){
-            while (end>start&&nums[end]>=key){
+
+            //移动指针
+            while (start<end&&nums[end]>=key){
                 end--;
             }
+            //填坑
+            //第二步，比基准元素小的数移动到基准元素的左半边区间
             if (nums[end]<=key){
                 int temp = nums[end];
                 nums[end]=nums[start];
@@ -565,15 +574,18 @@ public class Study {
             while (start<end&&nums[start]<=key){
                 start++;
             }
+            //第二步，比基准元素大的数移动到基准元素的右半边区间
             if (nums[start]>=key){
                 int temp =nums[start];
                 nums[start]=nums[end];
                 nums[end]=temp;
             }
         }
+        //第三步，处理左半边区间元素
         if (start>low){
             quickSort(nums,low,start-1);
         }
+        //第三步，处理右半边区间元素
         if (start<high){
             quickSort(nums,end+1,high);
         }

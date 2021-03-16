@@ -1,14 +1,28 @@
 package mapmapmap;
 
 
+import rpcdemo.rpc1.User;
+
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MapOkOk {
 
     //遍历map
     public void testMap() {
+        Map<Long, Integer> oMap = new HashMap<>(1);
+        Map<Long, Integer> oMap1 = new HashMap<>(1);
+        Map<Long, Map<Long, List<User>>> oMap2 = new HashMap<>(1);
+        Map<Long, String> oMap3 = new HashMap<>(64);
+        Map<String, String> oMap4 = new ConcurrentHashMap<>(32);
+
+        oMap.get(123L);
+        oMap.put(123L,123);
+        boolean flag = oMap.containsKey(123L);
+
         HashMap<String, Object> map = new HashMap<>();
         map.put("姓名", "ghy");
         map.put("年龄", 18);
