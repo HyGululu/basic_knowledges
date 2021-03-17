@@ -1,6 +1,4 @@
-package yuanzidemo;
-
-import java.util.concurrent.atomic.AtomicInteger;
+package atom;
 
 public class AtomicIntegerMyTest {
     private static final int THREADS_COUNT = 20;

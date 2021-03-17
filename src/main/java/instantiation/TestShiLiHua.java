@@ -1,4 +1,4 @@
-package shilihua;
+package instantiation;
 
 /*
 类实例化顺序为：

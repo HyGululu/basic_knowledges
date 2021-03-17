@@ -1,4 +1,4 @@
-package algorithm.shuzu;
+package algorithm.data;
 
 public class ArraySolution {
     //leetcode-215-数组中的第K个最大元素

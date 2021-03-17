@@ -9,7 +9,8 @@ public class FileStringCountDemo2 {
     public static void main(String args[]) throws IOException {
 
         //1、利用IO流将文档的单词读取
-        BufferedReader buf = new BufferedReader(new FileReader("/Users/guhuiyuan/Documents/2studyrepo/basic_knowledges/src/main/resources/java.txt"));
+       // BufferedReader buf = new BufferedReader(new FileReader("/Users/guhuiyuan/Documents/2studyrepo/basic_knowledges/src/main/resources/java.txt"));
+        BufferedReader buf = new BufferedReader(new FileReader("D:\\basicbasic\\basic_knowledges\\src\\main\\resources\\java.txt"));
         System.out.println("Read under this dir java.txt");
         //缓冲字符串
         StringBuffer sbuf = new StringBuffer();

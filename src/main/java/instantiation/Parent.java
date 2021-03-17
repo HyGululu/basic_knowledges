@@ -1,4 +1,4 @@
-package shilihua;
+package instantiation;
 
 public class Parent {
     {

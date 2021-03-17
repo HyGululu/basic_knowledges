@@ -1,4 +1,4 @@
-package algorithm.lianbiao;
+package algorithm.linkedlist;
 
 import org.apache.kahadb.index.ListNode;
 
