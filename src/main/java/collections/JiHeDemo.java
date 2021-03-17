@@ -1,6 +1,4 @@
-package jiheya;
-
-import sun.java2d.pipe.AAShapePipe;
+package collections;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

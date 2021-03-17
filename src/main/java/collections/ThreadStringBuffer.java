@@ -1,4 +1,4 @@
-package jiheya;
+package collections;
 
 /*
 StringBuffer 线程安全

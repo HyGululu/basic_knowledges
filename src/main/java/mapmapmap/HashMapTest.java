@@ -14,6 +14,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 1、hashmap不是线程安全的
 2、如何线程安全的使用HashMap
 
+ 三种线程安全使用方式
+ Hashtable（使用synchronized）
+ ConcurrentHashMap（Java8中使用CAS算法比较并替换）
+ synchronized Map
+
  */
 public class HashMapTest {
     public static void main(String[] args) {
