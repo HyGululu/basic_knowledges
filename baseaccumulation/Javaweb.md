@@ -1,5 +1,12 @@
 Javaweb
 
+Java Web包括四大核心知识点：
+1.Spring的IOC和AOP等知识点、
+2.Spring MVC框架的基本流程、
+3.ORM技术（了解 Hibernate与MyBatis的基本开发流程）、
+4.Spring MVC+MyBatis、
+ Java Web可以延后学习的知识点：JSP、Struts MVC、JS、CSS等前端知识
+
 # 1、基本概念
 
 ## 1、1前言
