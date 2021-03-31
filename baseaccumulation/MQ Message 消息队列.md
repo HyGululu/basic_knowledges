@@ -4,6 +4,16 @@ MQ Message queue 消息队列
 
 
 
+
+
+RocketMQ
+kafka 
+RabbitMQ elang语言写的
+
+
+
+
+
 队列模型
 
 发布-订阅模型
