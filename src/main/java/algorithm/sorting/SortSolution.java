@@ -9,12 +9,15 @@ public class SortSolution {
 
     //冒泡排序
     public void bubbleSort(int[] arr) {
+
         int temp = 0;
         //比较到数组尾部，每比较一次，确定最后位置的数据后，尾部位置依次递减
         for (int end = arr.length - 1; end > 0; end--) {
+            //boolean sortOk=true;
             //从头开始，相邻的两个元素比较，比较后加1
             for (int begin = 1; begin <= end; begin++) {
                 if (arr[begin] < arr[begin - 1]) {
+                    //sortOk =false;
                     //交换元素
                     temp = arr[begin];
                     arr[begin] = arr[begin - 1];
@@ -22,12 +25,14 @@ public class SortSolution {
 
                 }
             }
+            //if (sortOk){break;}
         }
     }
 
     @Test
     public void bubbleSortTest() {
-        int[] arr = {10, 7, 2, 4, 7, 62, 3, 4, 2, 1, 8, 9, 19};
+        //int[] arr = {10, 7, 2, 4, 7, 62, 3, 4, 2, 1, 8, 9, 19};
+        int[] arr = {1, 2, 2, 3, 4, 4, 7, 7, 8, 9, 10, 19, 62};
         bubbleSort(arr);
         System.out.println("bubbleSort排序后：" + Arrays.toString(arr));
     }
