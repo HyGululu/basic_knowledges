@@ -10,15 +10,16 @@ public class SortSolution {
     //冒泡排序
     public void bubbleSort(int[] arr) {
         int temp = 0;
-        //第一层循环，控制趟数
-        for (int i = 0; i < arr.length - 1; i++) {
-            //第二层循环，控制第i+1趟时，要比较的次数
-            for (int j = 0; j < arr.length - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
+        //比较到数组尾部，每比较一次，确定最后位置的数据后，尾部位置依次递减
+        for (int end = arr.length - 1; end > 0; end--) {
+            //从头开始，相邻的两个元素比较，比较后加1
+            for (int begin = 1; begin <= end; begin++) {
+                if (arr[begin] < arr[begin - 1]) {
                     //交换元素
-                    temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+                    temp = arr[begin];
+                    arr[begin] = arr[begin - 1];
+                    arr[begin - 1] = temp;
+
                 }
             }
         }
