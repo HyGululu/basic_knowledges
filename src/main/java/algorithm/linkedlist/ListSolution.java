@@ -5,7 +5,7 @@ import org.apache.kahadb.index.ListNode;
 /*
  */
 public class ListSolution {
-    //leetcode-206-反转链表
+    //leetcode-206-反转链表??
     public ListNode reverseList(ListNode head){
         if(head==null) {
             return null;
