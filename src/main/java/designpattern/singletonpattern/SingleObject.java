@@ -17,7 +17,7 @@ package designpattern.singletonpattern;
 缺点：不管是否用到，类加载时候就完成实例化，不用的时候，一加载就实例化了，Class.forName("")
  */
 public class SingleObject {
-    //创建 SingleObject 的一个对象
+    //创建 SingleObject 的一个对象 实例化的变量引用私有化；
     private  static  final SingleObject instance =new SingleObject();
 
     //让构造函数为 private，这样该类就不会被实例化,

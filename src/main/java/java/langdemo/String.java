@@ -1,4 +1,4 @@
-package java.lang;
+//package java.lang;
 
 /**
  * 双亲委派机制
@@ -12,7 +12,7 @@ package java.lang;
  *
  *
  */
-public class String {
+/*public class String {
     @Override
     public String toString() {
         return "hello ";
@@ -26,7 +26,7 @@ public class String {
 
         new Thread().start();
     }
-}
+}*/
 
 /*
     1、类加载器，搜到类加载的请求

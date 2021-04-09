@@ -13,6 +13,20 @@ public class FenZhiSolution {
      * - 对于 IPv4 地址的每一块，检查它们是否在 `0 - 255` 内，且没有前置零。
      * - 对于 IPv6 地址的每一块，检查其长度是否为 `1 - 4` 位的十六进制数。
      */
+    /*
+    split("\|") 和 split("\|", -1) 区别
+    若干最后n位都是切割符，split(" ")不会继续切分，split(" ", -1)会继续切分
+     */
+    @Test
+    public void testStr(){
+        String str ="192.168.199.11.";
+        String[] split = str.split("\\.");
+        //String[] split = str.split("\\.",-1);
+        for (int i =0;i<split.length;i++){
+            System.out.println(i+"="+split[i]);
+        }
+
+    }
     //验证IPv4
     public String validateIPv4(String IP) {
         String[] split = IP.split("\\.", -1);
