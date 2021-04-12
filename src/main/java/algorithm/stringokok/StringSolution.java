@@ -1,9 +1,12 @@
 package algorithm.stringokok;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.apache.commons.lang.StringUtils.isEmpty;
 
 public class StringSolution {
     /*
@@ -64,26 +67,25 @@ equals()：字符串比较。
 
     //leetcode-3-无重复字符的最长字串
     public int lengthOfLongestSubstring(String s) {
-        if(s.length()==0 || s==null) {
+        if (s.length() == 0 || s == null) {
             return 0;
         }
         int res = 0;
         //子串的开始位置
         int start = 0;
-        HashMap<Character,Integer> map = new HashMap<>();
+        HashMap<Character, Integer> map = new HashMap<>();
 
-        for(int end=0;end<s.length();end++){
-            if(map.containsKey(s.charAt(end))){
+        for (int end = 0; end < s.length(); end++) {
+            if (map.containsKey(s.charAt(end))) {
                 //如果没有取最大值会报错，不如abba,本来结果应该为2，却输出3
-                start= Math.max(start,map.get(s.charAt(end))+1);
+                start = Math.max(start, map.get(s.charAt(end)) + 1);
             }
-            map.put(s.charAt(end),end);
-            res = Math.max(res,end-start+1);
+            map.put(s.charAt(end), end);
+            res = Math.max(res, end - start + 1);
         }
         System.out.println("通过Map.entrySet遍历key和value");
-        for(Map.Entry<Character, Integer> entry: map.entrySet())
-        {
-            System.out.println("Key: "+ entry.getKey()+ " Value: "+entry.getValue());
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            System.out.println("Key: " + entry.getKey() + " Value: " + entry.getValue());
         }
         return res;
     }
@@ -92,6 +94,82 @@ equals()：字符串比较。
     public void lengthOfLongestSubstringTest() {
         int i = lengthOfLongestSubstring("abcabcabcdabcde");
         System.out.println("结果是:" + i);
+
+    }
+
+    /*反转字符串*/
+    //1. 利用 StringBuffer 或 StringBuilder 的 reverse 成员方法:
+    public String reverseString1(String str) {
+        return new StringBuilder(str).reverse().toString();
+    }
+
+    //2. 利用 String 的 toCharArray 方法先将字符串转化为 char 类型数组，然后将各个字符进行重新拼接:
+    public String reverseString2(String str) {
+        char[] chars = str.toCharArray();
+        String reverse = "";
+        for (int i = chars.length - 1; i >= 0; i--) {
+            reverse += chars[i];
+        }
+        return reverse;
+    }
+
+    //　3. 利用 String 的 CharAt 方法取出字符串中的各个字符:
+    public String reverseString3(String str) {
+        String reverse = "";
+        int length = str.length();
+        for (int i = 0; i < length; i++) {
+            reverse = str.charAt(i) + reverse;
+        }
+        return reverse;
+    }
+
+    @Test
+    public void reverseStringTest() {
+        String s = "abc123";
+
+        System.out.println("变换前: " + s);
+        System.out.println("变换后: " + reverseString1(s));
+        System.out.println("变换后: " + reverseString2(s));
+        System.out.println("变换后: " + reverseString3(s));
+    }
+
+    /*统计子串出现次数*/
+    //1、利用 Apache 的 Commons Lang 库：
+    public int countSubString1(String str, String subStr) {
+        int count = org.apache.commons.lang.StringUtils.countMatches(str, subStr);
+        return count;
+    }
+
+    //2、用 Spring Framework 提供的接口：
+    public int countSubString2(String str, String subStr) {
+        int occurrence = StringUtils.countOccurrencesOf(str, subStr);
+        return occurrence;
+    }
+
+    //3、从指定的索引开始，返回第一次出现的指定子字符串在此字符串内的索引实现子串出现次数的统计。
+    public int countSubString3(String str, String subStr) {
+        if (subStr == null || "".equals(subStr)) return 0;
+        int count = 0;
+        int fromIndex = 0;
+        while (true) {
+            int index = str.indexOf(subStr, fromIndex);
+            if (index == -1) {
+                break;
+            }
+            fromIndex = index + 1;
+            count++;
+        }
+        return count;
+    }
+
+    @Test
+    public void countSubStringTest() {
+        String str = "abcdefgabcabcefgefgerty1234589";
+        String subStr = "abc";
+
+        System.out.println(countSubString1(str, subStr));
+        System.out.println(countSubString2(str, subStr));
+        System.out.println(countSubString3(str, subStr));
 
     }
 }

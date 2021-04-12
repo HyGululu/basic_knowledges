@@ -1,34 +1,49 @@
 package mayibishi;
 
 import java.io.*;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static java.util.regex.Pattern.*;
 
 /*
 读取文件中，某个字符串出现次数
+
+读取一个文档，并统计出其中重复性单词的TopN：
+利用IO流将文档的单词读取
+将其存为map的K,V，新的单词记为K，出现次数记为V，
+利用比较器进行比较，遇到重复的单词找到他对应的V加一
  */
 public class FileStringCountDemo2 {
     public static void main(String args[]) throws IOException {
 
         //1、利用IO流将文档的单词读取
-       // BufferedReader buf = new BufferedReader(new FileReader("/Users/guhuiyuan/Documents/2studyrepo/basic_knowledges/src/main/resources/java.txt"));
+        // BufferedReader buf = new BufferedReader(new FileReader("/Users/guhuiyuan/Documents/2studyrepo/basic_knowledges/src/main/resources/java.txt"));
+        /*
+         * 首先将文件的内容读取到缓冲区bufferedreader中，
+         * 利用的是BufferedReader中的readline()读取文件中的每一个文本行，
+         * readline()并不是一行一行读取的，而是一个文本行一个文本行读取。 什么是文本行？
+         * 看JavaAPI中BufferedReader类总中的readline()的解释。
+         */
         BufferedReader buf = new BufferedReader(new FileReader("D:\\basicbasic\\basic_knowledges\\src\\main\\resources\\java.txt"));
         System.out.println("Read under this dir java.txt");
         //缓冲字符串
-        StringBuffer sbuf = new StringBuffer();
-        String line = null;
-        while ((line = buf.readLine()) != null) {
+        StringBuffer sb = new StringBuffer();
+        String text = null;
+        while ((text = buf.readLine()) != null) {
             //追加到缓冲字符串中
-            sbuf.append(line);
+            // 将从文件中读出来的字符串追加，形成一个字符串
+            sb.append(text);
         }
         //读取结束
         buf.close();
 
-        String str = sbuf.toString();
+        String str = sb.toString();
         System.out.println("读取的文件内容是：" + str);
 
         int count = searchCount(str, "甲骨文");
         System.out.println("字符串统计，甲骨文 出现的次数是：" + count);
-
-
     }
 
 
