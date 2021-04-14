@@ -56,3 +56,15 @@ public class Proxy implements java.io.Serializable {
 
 AOP的底层机制是动态代理
 AOP核心思想，不改变原来代码的情况下，对原有功能的增强
+例如Spring中的AOP，Struts2中的拦截器等
+
+![img](https://pic4.zhimg.com/80/v2-d187a82b1eb9c088fe60327828ee63aa_1440w.jpg?source=1940ef5c)
+
+![img](https://pic4.zhimg.com/80/v2-28223a1c03c1800052a5dfe4e6cb8c53_1440w.jpg?source=1940ef5c)
+
+动态代理![img](https://pic4.zhimg.com/80/v2-ba3d9206f341be466f18afbdd938a3b3_1440w.jpg?source=1940ef5c)
+
+![img](https://pic1.zhimg.com/80/v2-b5fc8b279a6152889afdfedbb0f611cc_1440w.jpg?source=1940ef5c)
+
+![img](https://pic2.zhimg.com/80/v2-6aacbe1e9df4fe982a68fe142401952e_1440w.jpg?source=1940ef5c)
+
