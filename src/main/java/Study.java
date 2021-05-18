@@ -2,9 +2,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Study {
 
@@ -552,42 +550,42 @@ public class Study {
      */
     private void quickSort(int[] nums,int low,int high) {
         //低的下标
-        int start =low;
+        int start = low;
         //高的下标
-        int end =high;
+        int end = high;
         //第一步，先从数组里找出一个基准元素，这里的基准元素取序列的第一个元素
-        int key =nums[low];
+        int key = nums[low];
         //开始循环，低的下标要小于高的下标，循环才能满足
-        while (start<end){
+        while (start < end) {
 
             //移动指针
-            while (start<end&&nums[end]>=key){
+            while (start < end && nums[end] >= key) {
                 end--;
             }
             //填坑
             //第二步，比基准元素小的数移动到基准元素的左半边区间
-            if (nums[end]<=key){
+            if (nums[end] <= key) {
                 int temp = nums[end];
-                nums[end]=nums[start];
-                nums[start]=temp;
+                nums[end] = nums[start];
+                nums[start] = temp;
             }
-            while (start<end&&nums[start]<=key){
+            while (start < end && nums[start] <= key) {
                 start++;
             }
             //第二步，比基准元素大的数移动到基准元素的右半边区间
-            if (nums[start]>=key){
-                int temp =nums[start];
-                nums[start]=nums[end];
-                nums[end]=temp;
+            if (nums[start] >= key) {
+                int temp = nums[start];
+                nums[start] = nums[end];
+                nums[end] = temp;
             }
         }
         //第三步，处理左半边区间元素
-        if (start>low){
-            quickSort(nums,low,start-1);
+        if (start > low) {
+            quickSort(nums, low, start - 1);
         }
         //第三步，处理右半边区间元素
-        if (start<high){
-            quickSort(nums,end+1,high);
+        if (start < high) {
+            quickSort(nums, end + 1, high);
         }
     }
 
@@ -598,5 +596,21 @@ public class Study {
         System.out.println("数组中找到第 2 个最大的元素是：" + kthLargest);
     }
 
+
+    //面试题48. 最长不含重复字符的子字符串（动态规划 / 双指针 + 哈希表，清晰图解）
+    //https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/solution/mian-shi-ti-48-zui-chang-bu-han-zhong-fu-zi-fu-d-9/
+    //初始化，一个map集合；tmp；res
+    public int lengthOfLongestSubstring(String s) {
+        Map<Character, Integer> dic = new HashMap<>();
+        int res = 0;
+        int tmp = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int index = dic.getOrDefault(s.charAt(i), -1);
+            tmp = tmp < i - index ? tmp + 1 : i - index;
+            res = Math.max(res, tmp);
+
+        }
+        return res;
+    }
 
 }

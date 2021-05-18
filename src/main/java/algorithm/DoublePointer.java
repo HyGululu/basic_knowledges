@@ -1,5 +1,7 @@
 package algorithm;
 
+import suanfa0415.SuanFa0415;
+
 /**
  * 双指针
  * 一类是「快慢指针」：主要解决链表中的问题，比如典型的判定链表中是否包含环
@@ -120,6 +122,30 @@ public class DoublePointer {
             left++;
             right--;
         }
+    }
+
+    //链表中倒数第 k 个节点（双指针，清晰图解）
+    //https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/solution/mian-shi-ti-22-lian-biao-zhong-dao-shu-di-kge-j-11/
+    public ListNode getKthFromEnd(ListNode head,int k){
+        //头节点 head
+        //初始化，双指针都指向头节点
+        //前指针
+        ListNode former=head;
+        //后指针
+        ListNode latter=head;
+        //构建距离：前指针向前移动k步
+        //构建距离：此时，latter和former间距是k
+        for (int i = 0; i < k; i++) {
+            former =former.next;
+        }
+        while (former!=null){
+            //共同移动：双指针每轮一起向前移动一步
+            //当前指针=null跳出，此时latter与尾部节点距离是k-1.即latter是倒数第k个节点，返回latter即可
+            former =former.next;
+            latter=latter.next;
+        }
+        //返回后指针
+        return latter;
     }
 
 }

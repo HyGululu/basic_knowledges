@@ -7,8 +7,32 @@ package algorithm;
  */
 public class LongestPalindrome {
 
-    String longestPalindrome(String s) {
-        return "";
+    //动态规划方法，空间换时间
+    String longestPalindrome(String str) {
+        if (str == null || str.length() < 2) {
+            return str + "不是回文串";
+        }
+        int strLen = str.length();
+        int maxStart = 0;//最长回文串的起点
+        int maxEnd = 0;//最长回文串的终点
+        int maxLen = 1;//最长回文串的长度
+
+        //用一个boolean dp[l][r]表示字符串从i到j这段是否为回文
+        boolean[][] dp = new boolean[strLen][strLen];
+
+        for (int r = 0; r < strLen; r++) {
+            for (int l = 0; l < r; l++) {
+                if (str.charAt(l) == str.charAt(r) && (r - l <= 2 || dp[l + 1][r - 1])) {
+                    dp[l][r] = true;
+                    if (r - l + 1 > maxLen) {
+                        maxLen = r - l + 1;
+                        maxStart = l;
+                        maxEnd = r;
+                    }
+                }
+            }
+        }
+        return str.substring(maxStart, maxEnd + 1);
     }
 
     /*
