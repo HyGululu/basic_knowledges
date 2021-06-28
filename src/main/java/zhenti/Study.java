@@ -257,43 +257,47 @@ public class Study {
     }
 
 
-    //两个字符串的公共最长子串,找最短的，然后找其子序列，然后判断序列是否在长串中包含（indexOf不为-1），包含存入集合，遍历集合，找出最长
+    //暴力（Brute Force），所有长度大于2的子串，两个字符串的公共最长子串,找最短的，
+    // 然后找其子序列，然后判断序列是否在长串中包含（indexOf不为-1），
+    // 包含存入集合，遍历集合，找出最长
 
     //最长回文子串
-    public String maxString(String s) {
+    public String maxString(String str) {
         //判断入参是否为空和null，为空格
-        if (StringUtils.isBlank(s)) {
+        if (StringUtils.isBlank(str)) {
             return "入参不能为空";
         }
-        ArrayList<String> strings = new ArrayList<>();
-        for (int i = 0; i < s.length() - 1; i++) {//注意边界本身不算
-            for (int j = i + 2; j < s.length() + 1; j++) {//注意起始值，左闭右开，不包含本身
-                String s1 = s.substring(i, j);
-                System.out.println(s1);
+        ArrayList<String> strList = new ArrayList<>();
+        for (int i = 0; i < str.length() - 1; i++) {//注意边界本身不算
+            for (int j = i + 2; j < str.length() + 1; j++) {//注意起始值，左闭右开，不包含本身
+                String s1 = str.substring(i, j);
+                System.out.println("s1数值："+s1);
                 String s2 = (new StringBuilder(s1)).reverse().toString();
+                System.out.println("s2数值："+s2);
                 if (s1.equals(s2)) {
-                    strings.add(s1);
+                    strList.add(s1);
                 }
             }
         }
         //判断集合是否为空
-        if (!strings.isEmpty()) {
-            System.out.println(strings);
-            String maxString = strings.get(0);
-            for (int i = 1; i < strings.size(); i++) {
-                if (strings.get(i).length() > maxString.length()) {
-                    maxString = strings.get(i);
+        if (!strList.isEmpty()) {
+            System.out.println("存储回文串的集合："+strList);
+            String maxString = strList.get(0);
+            for (int i = 1; i < strList.size(); i++) {
+                if (strList.get(i).length() > maxString.length()) {
+                    maxString = strList.get(i);
                 }
             }
-            return maxString;
-        } else {
+            return "最长回文子串是："+maxString;
+        }
+        else {
             return "不存在";
         }
     }
 
     @Test
     public void maxStringTest() {
-        String s = "eramcbea";
+        String s = "abwttw";
         String string = maxString(s);
         System.out.println(string);
     }

@@ -6,6 +6,7 @@ public class StringSolution2 {
 
     /**
      * 字符串数字相加
+     *
      * @param str
      */
     public void numPlusInString(String str) {
@@ -30,6 +31,15 @@ public class StringSolution2 {
         String str2 = "1ee7";
         String str = str1 + str2;
         numPlusInString(str);
+    }
+
+    //最长不含重复字符的子字符串
+    public int lengthOfLongestSubstring(String s) {
+        return -1;
+    }
+
+    @Test
+    public void testNumPlusInStringTest() {
     }
 }
 

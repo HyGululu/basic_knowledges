@@ -46,34 +46,34 @@ public class SortSolution {
         if (low > high) {
             return;
         }
-        int i, j, temp, t;
-        i = low;
-        j = high;
-        //temp是基准位
-        temp = arr[low];
+        int left, right, pivot, temp;
+        left = low;
+        right = high;
+        //pivot是中心轴
+        pivot = arr[low];
 
-        while (i < j) {
+        while (left < right) {
             //先看左边，依次往左递减
-            while (temp <= arr[j] && i < j) {
-                j--;
+            while (pivot <= arr[right] && left < right) {
+                right--;
             }
             //再看右边，依次往右递增
-            while (temp >= arr[i] && i < j) {
-                i++;
+            while (pivot >= arr[left] && left < right) {
+                left++;
             }
             //如果满足交换条件
-            if (i < j) {
-                t = arr[j];
-                arr[j] = arr[i];
-                arr[i] = t;
+            if (left < right) {
+                temp = arr[right];
+                arr[right] = arr[left];
+                arr[left] = temp;
             }
-            //最后将基准为i和j相等位置的数字交换
-            arr[low] = arr[i];
-            arr[i] = temp;
+            //最后将基准（中心轴点）为left和right相等位置的数字交换
+            arr[low] = arr[left];
+            arr[left] = pivot;
             //递归调左半边数组
-            quickSort(arr, low, j - 1);
+            quickSort(arr, low, left - 1);
             //递归调右半边数组
-            quickSort(arr, j + 1, high);
+            quickSort(arr, right + 1, high);
         }
     }
 
@@ -89,3 +89,16 @@ public class SortSolution {
 
     }
 }
+
+/*
+快速排序思想
+随机数列（19，97，9，17，1，8），对所有数字遍历，在其中选择一个作为基准点（Basic）选择19
+左标记（19）：从左往右移动，找比Basic大的数字，放到序列的右边
+右标记（8）：从又往左移动，找比Basic小的数字，放到序列的左边
+两坐标重合，Basic（19）放到重合位置
+（8，1，9，17，19，97）
+发现左子序列（8，1，9，17）都比19小
+右子序列（97）比19大
+再对左子序列和右子序列重复操作
+（8，1，9，17），选取8作为Basic
+ */

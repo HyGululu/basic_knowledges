@@ -90,5 +90,16 @@ public class SuanFa0415 {
 
     }
 
+
+    //最长回文子串
+    public String longestPalindrome(String s) {
+        return "";
+    }
+
+    @Test
+    public void longestPalindromeTest() {
+
+    }
+
 }
 

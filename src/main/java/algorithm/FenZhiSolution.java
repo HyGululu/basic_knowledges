@@ -29,8 +29,8 @@ public class FenZhiSolution {
     }
     //验证IPv4
     public String validateIPv4(String IP) {
-        String[] split = IP.split("\\.", -1);
-        for (String str : split) {
+        String[] splitArr = IP.split("\\.", -1);
+        for (String str : splitArr) {
             // Validate integer in range (0, 255):
             // 1. length of chunk is between 1 and 3
             if (str.length() == 0 || str.length() > 3) {

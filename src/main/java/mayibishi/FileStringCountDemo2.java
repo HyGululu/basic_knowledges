@@ -10,10 +10,6 @@ import static java.util.regex.Pattern.*;
 /*
 读取文件中，某个字符串出现次数
 
-读取一个文档，并统计出其中重复性单词的TopN：
-利用IO流将文档的单词读取
-将其存为map的K,V，新的单词记为K，出现次数记为V，
-利用比较器进行比较，遇到重复的单词找到他对应的V加一
  */
 public class FileStringCountDemo2 {
     public static void main(String args[]) throws IOException {
