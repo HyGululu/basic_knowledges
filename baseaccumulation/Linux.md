@@ -1,5 +1,11 @@
 Linux
 
+stat 文件名 查看文件更新时间
+tcpdump 抓包工具( 抓取linux服务器上的数据包 )
+  安装 yum install  tcpdump -y
+抓取特定网卡 80端口的链接情况：
+先用ifconfig查看网卡名称：
+tcpdump -i ens33 port 80
 
 
 Linux使用命令行

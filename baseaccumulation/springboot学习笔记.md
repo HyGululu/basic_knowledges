@@ -1,3 +1,76 @@
+二、spring加载应用上下文的五种方式：
+1.AnnotationConfigApplicationContext：从一个或多个基于java的配置类中加载spring的上下文；
+2.AnnotationConfigWebApplicationContext:从一个或多个基于java的配置类中加载spring web的上下文；
+3.ClassPathXmlApplicationContext:从类路径下的一个或多个xml加载spring的上下文；
+4.FileSystemXmlapplicationContext:从系统文件中的一个或多个xml加载spring的上下文；
+5.XmlWebApplicationContext：基于web的xml架子加载上下文
+
+
+Spring中常见的bean创建异常
+解决这种类型的问题——首先, 确保bean已经声明了
+在XML配置文件使用< bean / >元素
+或通过@bean注释Java @ configuration类
+或注释:@Component,@Repository,@Service,@Controller和类路径是否扫描包中。
+同时检查配置文件或类文件是否真的已经被spring装载到上下文中。
+加载这些容器的配置文件的xml有一下几种常见的方法：
+1：引用资源用XmlBeanFactory（不能实现多个文件相互引用）
+
+Resource resource = new ClassPathResource("appcontext.xml");  
+BeanFactory factory = new XmlBeanFactory(resource);
+
+      从factory中获取相应资源文件中的bean，但是这种bean读不到引用了其他文件中的bean！ 
+2：引用应用上下文用ClassPathXmlApplicationContext
+
+ApplicationContext factory=new ClassPathXmlApplicationContext("classpath:applicationContext.xml");   
+ApplicationContext factory=new ClassPathXmlApplicationContext("conf/userConfig.xml");   // src/conf 目录下的   
+ApplicationContext factory=new ClassPathXmlApplicationContext("file:G:/Test/src/appcontext.xml");
+
+3：用文件系统的路径引用应用上下文用FileSystemXmlApplicationContext
+
+ApplicationContext factory=new FileSystemXmlApplicationContext("src/applicationContext.xml");        
+ApplicationContext factory=new FileSystemXmlApplicationContext("classpath:appcontext.xml");  
+ApplicationContext factory=new FileSystemXmlApplicationContext("file:G:/Test/src/appcontext.xml");  
+ApplicationContext factory=new FileSystemXmlApplicationContext("G:/Test/src/appcontext.xml");
+
+
+使用spring开发时，进行配置主要有两种方式，一是xml的方式，二是java config的方式。
+
+@Autowired 为 Spring 的注解，含义是将某类动态的注入到当前类中
+这个注解的功能就是为我们注入一个定义好的bean
+
+@Autowired注解的用法：
+将@Autowired注解应用于构造函数
+将@Autowired注释应用于setter方法
+将@Autowired注释应用于具有任意名称和多个参数的方法
+也可以将@Autowired应用于字段，或者将其与构造函数混合
+直接应用于字段是我们使用的最多的一种方式，但是使用构造方法注入从代码层面却是更加好的
+还有以下不太常见的几种方式
+将@Autowired注释添加到需要该类型数组的字段或方法，则spring会从ApplicationContext中搜寻符合指定类型的所有bean
+
+spring注解作用
+首先，我们从所属范围来看，事实上这个注解是属于spring的容器配置的一个注解，与它同属容器配置的注解还有：@Required,@Primary, @Qualifier等等。因此@Autowired注解是一个用于容器(container)配置的注解。
+其次，我们可以直接从字面意思来看，@autowired注解来源于英文单词autowire,这个单词的意思是自动装配的意思。自动装配又是什么意思？这个词语本来的意思是指的一些工业上的用机器代替人口，自动将一些需要完成的组装任务，或者别的一些任务完成。而在spring的世界当中，自动装配指的就是使用将Spring容器中的bean自动的和我们需要这个bean的类组装在一起。
+因此，笔者个人对这个注解的作用下的定义就是:将Spring容器中的bean自动的和我们需要这个bean的类组装在一起协同使用。
+接下来，我们就来看一下这个注解背后到底做了些什么工作。
+@Autowired注解是如何实现的
+事实上，要回答这个问题必须先弄明白的是java是如何支持注解这样一个功能的。
+java的注解实现的核心技术是反射，让我们通过一些例子以及自己实现一个注解来理解它工作的原理。
+例如注解@Override
+@Override注解的定义如下:
+@Override注解使用java官方提供的注解，它的定义里面并没有任何的实现逻辑。注意，所有的注解几乎都是这样的，注解只能是被看作元数据，它不包含任何业务逻辑。　注解更像是一个标签，一个声明，表面被注释的这个地方，将具有某种特定的逻辑。
+那么，问题接踵而至，注解本身不包含任何逻辑，那么注解的功能是如何实现的呢？答案必然是别的某个地方对这个注解做了实现。以@Override注解为例，他的功能是重写一个方法，而他的实现者就是JVM，java虚拟机，java虚拟机在字节码层面实现了这个功能。
+但是对于开发人员，虚拟机的实现是无法控制的东西，也不能用于自定义注解。所以，如果是我们自己想定义一个独一无二的注解的话，则我们需要自己为注解写一个实现逻辑，换言之，我们需要实现自己注解特定逻辑的功能。
+自己实现一个注解
+在自己写注解之前我们有一些基础知识需要掌握，那就是我们写注解这个功能首先是需要java支持的，java在jdk5当中支持了这一功能，并且在java.lang.annotation包中提供了四个注解，仅用于编写注解时使用，他们是：
+我们不妨自己来想一想。首先，我想给标注了这个注解的方法或字段实现功能，我们必须得知道，到底有哪些方法，哪些字段使用了这个注解吧，因此，这里我们很容易想到，这里应该会用到反射。
+其次，利用反射，我们利用反射拿到这样目标之后，得为他实现一个逻辑，这个逻辑是这些方法本身逻辑之外的逻辑，这又让我们想起了代理，aop等知识，我们相当于就是在为这些方法做一个增强。事实上的实现主借的逻辑也大概就是这个思路。梳理一下大致步骤如下:
+利用反射机制获取一个类的Class对象
+通过这个class对象可以去获取他的每一个方法method，或字段Field等等
+Method，Field等类提供了类似于getAnnotation的方法来获取这个一个字段的所有注解
+拿到注解之后，我们可以判断这个注解是否是我们要实现的注解，如果是则实现注解逻辑
+现在我们来实现一下这个逻辑，代码如下:
+
+
 |                 | @ConfigrationProperties  | @Value       |
 | --------------- | ------------------------ | ------------ |
 | 功能            | 批量注入配置文件中的属性 | 一个一个指定 |

@@ -1,0 +1,14 @@
+bean的生命周期
+ IOC调用getBean方法进行实例化
+ 完成populateBean方法对bean进行属性赋值，并进入了二三级缓存。
+ 开始执行*Aware接口，例如BeanNameAware, BeanFactoryAware等，从日志可以看到，虽然此时的Bean还没有彻底初始化完，但是*Aware接口已经可以拿到相关Bean的部分属性了，例如BeanName或BeanFactory。
+ 基于BeanPostProcessor的postProcessBeforeInitialization方法预初始化。
+ 基于@PostConstruct注解方法开始执行，是在实例化后初始化前的。
+ 基于InitializingBean接口afterPropertiesSet方法执行。
+ 自定义方法init-method开始执行初始化，后置处理执行后开始执行。
+ 完成addSingleton方法将bean放入一级缓存，移除二三级缓存。
+ 基于BeanPostProcessor的postProcessAfterInitialization方法后初始化，可以进行业务逻辑调用。
+ 容器关闭。
+ 基于@PreDestroy注解开始执行销毁操作。
+ 基于DisposableBean接口destroy方法执行。
+ 自定义方法destroy-method方法执行销毁操作。
